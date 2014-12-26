@@ -15,7 +15,7 @@
 {embed:"v3/navigation"}
         </nav>
 
-        <section class="social">
+<section class="social">
             <ul>
                 <li>
                     <a href="http://twitter.com/ArtisanChurch" title="Follow us on Twitter">
@@ -30,12 +30,18 @@
             </ul>
             <form name="enews-subscribe" class="enews-subscribe">
                 <fieldset>
-                    <legend>Sign up to receive our weekly e-news</legend>
+                    <div class="enews-legend">
+                        <legend>Subscribe to our weekly email newsletter</legend>
+                    </div>
 
-                    <label for="email">E-mail</label>
-                    <input id="email" name="email" type="email" placeholder="E-mail address" />
+                    <div class="enews-input">
+                        <label for="email">E-mail</label>
+                        <input id="email" name="email" type="email" placeholder="E-mail address">
+                    </div>
 
-                    <input id="submit" name="submit" type="submit" value="Subscribe" />
+                    <div class="enews-submit">
+                        <input id="submit" name="submit" type="submit" value="Sign up">
+                    </div>
                 </fieldset>
             </form>
         </section>
