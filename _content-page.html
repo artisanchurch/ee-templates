@@ -1,10 +1,10 @@
 {embed="v3/_page-top"
- title="Page title"
+ title="Section name: Page title"
  desc="Page description"
- page_slug="This page's slug for active page identification purposed"
- section_slug="The slug for the section this page belongs to"}
+ page_slug="This page's slug for active page identification"
+ sec_slug="The slug for the section this page belongs to"}
 
-{embed="v3/_header"}
+{embed="v3/_header" sec_slug="The slug for the section this page belongs"}
 
     <main class="main inside" id="main" role="main">
 
@@ -14,10 +14,10 @@
 
         </section>
 
-        {embed="v3/_sidebar-section.html"}
+        {embed="v3/_sidebar-section.html" page_slug="This page's slug for active page identification"}
 
     </main>
 
-{embed="v3/_footer"}
+{embed="v3/_footer" sec_slug="The slug for the section this page belongs"}
 
 {embed="v3/_page-bottom"}
