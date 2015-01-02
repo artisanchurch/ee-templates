@@ -29,50 +29,78 @@
 
         <section class="features">
 
+{exp:weblog:entries weblog="series" limit="1"}
             <section class="feature-primary">
-                <a class="feature-primary-img" href="/worship/messages/series-name/">
+                <!-- Would like to change URL structure to worship/(messages/)series -->
+                <a class="feature-primary-img" href="/series/{url_title}">
                     <div class="feature-primary-img-bg">
                         <!-- big feature image (16x9) -->
-                        <img src="http://www.artisanchurch.com/ee/images/site_images/series/FamilyofAbraham_web.jpg"
-                             alt=""> <!-- Alt tag intentionally left blank -->
+                    {if ImageURL}
+                        <img src="{ImageURL}" alt="">
+                    {if:else}
+                        <img data-src="holder.js/800x450/auto/text:{title}" alt="">
+                    {/if}
                     </div>
                 </a>
                 <section class="feature-primary-copy">
                     <div class="feature-primary-copy-bg">
                         <header>
                             <h3 class="feature-slug">Current Series</h3>
-                            <a class="feature-primary-title" href="/worship/messages/series-name/">
-                                <h1>Family of Abraham</h1>
+                            <a class="feature-primary-title" href="{url_title}">
+                                <h1>{title}</h1>
                             </a>
-                            <h2>Blessed to be a blessing</h2>
+                            {if SeriesSubtitle}<h2>{SeriesSubtitle}</h2>{/if}
                         </header>
-                        <p>Abraham was called by God to be the father of a “great nation” that would be the source of blessing for all the families of the earth. In the story of Abraham and his descendants, we find a great foundation for our own participation in the unfolding Story of God.</p>
-                        <a class="read-more" href="/worship/messages/series-name">
+                        {series_description}
+                        <a class="read-more" href="/series/{url_title}">
                             series details <i class="icon-angle-right"></i>
                         </a>
                     </div>
                 </section>
             </section>
+{/exp:weblog:entries}
 
             <div class="features-secondary">
 
+{exp:weblog:entries weblog="events"
+                    show_future_entries="yes"
+                    start_on="{current_time format='%Y-%m-%d %H:%i'}"
+                    orderby="event_start_date"
+                    sort="asc"
+                    limit="1"}
+    <!-- If event end date is not in the past -->
+    {if "{exp:recent_past date='{event_end_date}' past_days='0'}" == "yes"}
+    <!-- The commented line below is a workaround for an EE parsing bug as of v1.6.9. DO NOT DELETE! -->
+    <!-- {exp:recent_past date='{event_end_date}' past_days='0'} -->
                 <section class="feature-secondary">
-                    <a href="#">
-                        <!-- <img src="http://dummyimage.com/280x158/CCC/222&amp;text=small+feature" alt="small feature" width="280" /> -->
-                        <img data-src="holder.js/400x225/auto" />
+                    <a href="/events/{url_title}">
                         <!-- small feature image -->
+                    {if event_image}
+                        <img src="{event_image}" alt="">
+                    {if:else}
+                        <img data-src="holder.js/400x225/auto/text:{title}" alt="">
+                    {/if}
                     </a>
                     <section class="feature-secondary-copy">
                         <header>
                             <h3 class="feature-slug">Special Event</h3>
-                            <a class="feature-secondary-title" href="/worship/events/event-name/">
-                                <h1>Event Title</h1>
+                            <a class="feature-secondary-title" href="/events/{url_title}">
+                                <h1>{title}</h1>
                             </a>
-                            <h2>Secondary heading text</h2>
+                            {if event_date_desc}<h2>{event_date_desc}</h2>{/if}
                         </header>
-                        <p>This is the shorter description of this item. This is the shorter description of this item. <a href="#">learn more&nbsp;<i class="icon-angle-right"></i></a></p>
+                    {if event_short_description}
+                        {event_short_description}
+                    {if:else}
+                        {event_description}
+                    {/if}
+                        <a class="read-more" href="/events/{url_title}">
+                            learn more <i class="icon-angle-right"></i>
+                        </a>
                     </section>
                 </section>
+    {/if}
+{/exp:weblog:entries}
 
                 <section class="feature-secondary">
                     <a href="#">
