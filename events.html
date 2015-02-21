@@ -1,0 +1,202 @@
+{if segment_3 == ''}
+{!--============================================================================
+    ALL CURRENT EVENTS
+    ============================================================================
+    If this is the current events page
+    (i.e., URL segment 3 IS NOT given after /events/),
+    output the blurbs of all current events.
+--}
+{embed="v3/_page-top"
+ title="Current & Upcoming Events"
+ desc="Artisan events that are ongoing or coming soon."
+ page_slug="current-events"
+ sec_slug="events"}
+
+{embed="v3/_header" sec_slug="events"}
+
+    <main class="main inside" id="main" role="main">
+
+        <section class="content">
+
+            <h1>Current & Upcoming Events</h1>
+
+    {!-- Build event ID list --}
+    {exp:ministash:set name="event_id_list"}
+        {exp:query sql="SELECT entry_id,
+                               field_id_53 AS event_end_date,
+                               field_id_95 AS event_priority,
+                               field_id_96 AS event_save_the_date
+                        FROM exp_weblog_data
+                        WHERE weblog_id = 11
+                          AND field_id_53 > UNIX_TIMESTAMP()
+                          AND field_id_96 != 'Yes'
+                        ORDER BY field_id_95 DESC,
+                                 field_id_53 ASC
+                        LIMIT 10"
+                   orderby="event_priority|event_end_date"
+                   sort="desc|asc"
+                   limit="10"
+                   disable="categories|category_fields|member_data|pagination|trackbacks"
+                   backspace="1"}{entry_id}|{/exp:query}
+    {/exp:ministash:set}
+
+    {!-- Fetch all events whose IDs match the list built above --}
+    {exp:weblog:entries weblog="events"
+                        parse="inward"
+                        entry_id="{exp:ministash:get name='event_id_list'}"
+                        orderby="event_priority|event_end_date"
+                        sort="desc|asc"
+                        limit="10"
+                        disable="categories|category_fields|member_data|pagination|trackbacks"}
+
+        <article class="event">
+
+            <a href="/events/{url_title}">
+            {if event_image}
+                <img class="event-img" src="{event_image}" alt="">
+            {if:else}
+                <img class="event-img" data-src="holder.js/580x326/auto/text:{title}" alt="">
+            {/if}
+            </a>
+
+            <div class="event-description">
+
+                <a href="/events/{url_title}">
+                    <h1 class="event-title h2">{title}</h1>
+                </a>
+
+            {if event_date_desc}
+                <div class="h3 event-date">{event_date_desc}</div>
+            {/if}
+
+            {if event_short_description}
+                {event_short_description}
+            {if:else}
+                {event_description}
+            {/if}
+
+            {if event_cost}
+                <p><b>Cost:</b> {event_cost}</p>
+            {/if}
+
+            {if event_location}
+                <p><b>Location:</b> {event_location}</p>
+            {/if}
+
+            {if event_extra_details || (event_short_description && event_description)}
+                <a class="read-more" href="/events/{url_title}">
+                    more details <i class="icon-angle-right"></i>
+                </a>
+            {/if}
+
+            </div> <!-- /.event-description -->
+
+        </article> <!-- /.event -->
+
+    {/exp:weblog:entries}
+
+{if:else}
+{!--============================================================================
+    INDIVIDUAL EVENTS
+    ============================================================================
+    If this is an individual event page
+    (i.e., URL segment 3 IS given, e.g., /events/[individual_event]),
+    output all details of the one event.
+--}
+
+    {!-- Fetch the requested event, the one whose url_title == URL segment 3 --}
+    {exp:weblog:entries weblog="events" url_title="{segment_3}" limit="1"}
+
+{embed="v3/_page-top"
+ title="Event: {title}"
+ desc="{if event_short_description}{event_short_description}{if:else}{event_date_desc}{/if}"
+ page_slug="current-events"
+ sec_slug="events"}
+
+{embed="v3/_header" sec_slug="events"}
+
+    <main class="main inside" id="main" role="main">
+
+        <section class="content">
+
+            <article class="event">
+
+                <h1>{title}</h1>
+
+            {if event_image}
+                <img class="event-img" src="{event_image}">
+            {if:else}
+                <img data-src="holder.js/580x326/auto/text:{title}" alt="">
+            {/if}
+
+                <div class="event-description">
+
+                {if event_date_desc}
+                    <div class="h3 event-date">{event_date_desc}</div>
+                {/if}
+
+                    {event_description}
+
+                {if event_extra_details}
+                    {event_extra_details}
+                {/if}
+
+                {if event_cost}
+                    <p><b>Cost:</b> {event_cost}</p>
+                {/if}
+
+                {if event_location}
+                    <p><b>Location:</b> {event_location}</p>
+                {/if}
+
+                </div>
+
+                {if event_email || event_phone}
+                    For more information,
+
+                    {if event_phone}
+
+                        call
+
+                        {if event_point_person}
+                            {event_point_person} at
+                        {/if}
+
+                        {event_phone}
+
+                    {/if}
+
+                    {if event_email}
+
+                        {if event_phone}
+                            or
+                        {/if}
+
+                        email
+
+                        {if event_phone == "" && event_point_person}
+                            {event_point_person} at
+                        {/if}
+
+                        <a href="mailto:{event_email}?subject={title}">{event_email}</a>
+
+                    {/if}
+
+                    .
+                {/if} {!-- end of check for event contact fields --}
+
+            </article> <!-- /.event -->
+
+    {/exp:weblog:entries}
+
+{/if}
+
+        </section>
+
+        {embed="v3/_sidebar-events" page_slug="current-events"}
+
+    </main>
+
+{embed="v3/_footer" sec_slug="events"}
+
+{embed="v3/_page-bottom"}

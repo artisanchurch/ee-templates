@@ -1,0 +1,43 @@
+
+        <aside class="sidebar">
+
+            <div class="section-id">Events <i class="icon-chevron-right"></i></div>
+
+            <nav class="nav-inside">
+                <ul>
+                    <li class="mission-values{if embed:page_slug == 'current-events'} current{/if}">
+                        <a href="/events/">Current & Upcoming</a>
+                    </li>
+                    <li class="staff{if embed:page_slug == 'full-calendar'} current{/if}">
+                        <a href="/full-calendar/">Subscribe</a>
+                    </li>
+                    <li class="name{if embed:page_slug == 'save-the-date'} current{/if}">
+                        <a href="/save-the-date/">Save the Date</a>
+                    </li>
+                </ul>
+            </nav>
+
+            {!-- Calendar plugin won't work without being updated to support the GCal API v3 --}
+            {!--<section class="sidebar-content">
+                <h1>Next 5 Events</h1>
+            {exp:gcal gcal_id="ank35711dmuaa34iq4f5h4e0fc%40group.calendar.google.com"
+                      show_future="true"
+                      singleevents="true"
+                      orderby="starttime"
+                      sort_order="ascending"
+                      limit="10"
+                      refresh="5176"}
+                <article class="sidebar-event">
+                    <a href="{link}">{title}</a>
+                    {start_time format="%D %n/%j, %g:%i"}
+                    <span style="font-variant: small-caps;">{start_time format="%a"}</span> &ndash;
+                    {end_time format="%g:%i"}
+                    <span style="font-variant: small-caps;">{end_time format="%a"}</span>
+                    {if location}
+                        <a href="http://maps.google.com/maps?f=q&hl=en&geocode=&time=&date=&ttype=&daddr={location}&saddr=&z=14&iwloc=addr&om=0">[map]</a>
+                    {/if}
+                </article>
+            {/exp:gcal}
+            </section>--}
+
+        </aside>
