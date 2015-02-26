@@ -1,0 +1,76 @@
+{embed="v3/_page-top"
+ title="Podcast"
+ desc="Subscribe to our podcast and automatically receive Artisan Church's weekly message and other content."
+ page_slug="podcast"
+ sec_slug="podcast"}
+
+{embed="v3/_header" sec_slug="podcast"}
+
+    <main class="main inside" id="main" role="main">
+
+        <section class="content">
+
+            <h1>Subscribe to Our Podcast</h1>
+
+            <a href="https://itunes.apple.com/podcast/artisan-church-podcast/id81919489">
+                <img class="podcast-art"
+                     src="/static/img/artisan-podcast-art-1400.jpg"
+                     alt="Artisan Church Podcast cover art">
+            </a>
+
+            <p class="intro">
+                Automatically receive Artisan Church’s weekly message and other audio and video content,
+                such as songs, interviews, and more.
+            </p>
+
+            <h2>How to subscribe</h2>
+
+            <p>
+                If you already have a favorite podcast app, just search its directory for “Artisan Church”.
+                It should come right up!
+            </p>
+            <p>
+                If you get podcasts via iTunes,
+                <a href="https://itunes.apple.com/podcast/artisan-church-podcast/id81919489">view our page
+                in iTunes and subscribe there</a>.
+            </p>
+            <p>
+                If you’re the power user type, here’s the direct URL to the feed:
+                <a href="http://www.artisanchurch.com/artisanchurchpodcast.xml">http://www.artisanchurch.com/artisanchurchpodcast.xml</a>.
+                You know what to do.
+            </p>
+
+            <h2>Download single messages directly</h2>
+
+            <p>
+                You can also visit our <a href="/archives/">message archive</a> and look for the “listen”
+                link next to each past message. Click it to download the message audio in MP3 format.
+            </p>
+
+        </section>
+
+        <aside class="sidebar">
+
+            <section class="sidebar-content">
+                <h1>Recent messages</h1>
+                <dl class="recent-messages">
+                {exp:weblog:entries weblog="messages"
+                                    search:audio="not IS_EMPTY"
+                                    orderby="msg_date"
+                                    limit="5"
+                                    disable="categories|category_fields|member_data|pagination|trackbacks"}
+                    <dt>{title}</dt>
+                        <dd>{msg_date format="%F %j, %Y"}</dd>
+                        {if speaker !=""}<dd class="recent-messages-speaker">{speaker}</dd>{/if}
+                        <dd><a href="{audio}">Listen</a></dd>
+                {/exp:weblog:entries}
+                </dl>
+            </section>
+
+        </aside>
+
+    </main>
+
+{embed="v3/_footer" sec_slug="podcast"}
+
+{embed="v3/_page-bottom"}

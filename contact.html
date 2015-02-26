@@ -1,0 +1,132 @@
+{embed="v3/_page-top"
+ title="Contact Us"
+ desc="Contact information for the pastors and leadership of Artisan Church."
+ page_slug="contact"
+ sec_slug="contact"}
+
+{embed="v3/_header" sec_slug="contact"}
+
+    <main class="main inside" id="main" role="main">
+
+        <section class="content">
+
+            <h1>Contact Us</h1>
+
+            <div class="contact-general">
+
+                <dl>
+                    <dt>General inquiries</dt>
+                        <dd><a href="mailto:info@artisanchurch.com">info@artisanchurch.com</a></dd>
+                    <dt>Prayer requests</dt>
+                        <dd><a href="mailto:prayer@artisanchurch.com">prayer@artisanchurch.com</a></dd>
+                    <dt>Questions about giving</dt>
+                        <dd><a href="mailto:giving@artisanchurch.com">giving@artisanchurch.com</a></dd>
+                </dl>
+
+            </div>
+
+            <h2>Staff</h2>
+
+            <dl>
+
+            {exp:weblog:entries weblog="staff"
+                                orderby="start_date"
+                                sort="asc"
+                                limit="5"
+                                disable="categories|category_fields|member_data|pagination|trackbacks"}
+
+                <dt>{title}</dt>
+                    <dd>{staffPosition}</dd>
+                    <dd><a href="mailto:{staffEmail}">{staffEmail}</a></dd>
+                    <dd><a href="tel:+1 {staffPhone}">{staffPhone}</a></dd>
+
+            {/exp:weblog:entries}
+
+            </dl>
+
+            <h2>Lay Leadership</h2>
+
+            <dl>
+                <dt>Leadership Team</dt>
+                    <dd>
+                        The Leadership Team comprises Artisan’s pastoral staff and a half-dozen
+                        lay leaders that are elected by the congregation to three-year terms.
+                        You can contact the Leadership Team chairperson, James Sconfitto, at
+                        <a href="mailto:james@artisanchurch.com">james@artisanchurch.com</a>.
+                    </dd>
+                <dt>Pastoral Relations Committee</dt>
+                    <dd>
+                        The Pastoral Relations Committee counsels Pastor Scott,
+                        and works to ensure that he is receiving the support he needs
+                        to be able to effectively pastor the congregation.
+                        You can contact the committee chairperson, Ariana D’Angelo, at
+                        <a href="mailto:ariana@artisanchurch.com">ariana@artisanchurch.com</a>.
+                    </dd>
+            </dl>
+
+            <p>
+                To contact leaders of other ministry areas, please see the
+                <a href="/ministries/">Ministries</a> section.
+            </p>
+
+
+        </section>
+
+        <aside class="sidebar">
+
+            <section class="sidebar-content social">
+
+                <h1>Social Media</h1>
+
+                <p>
+                    Join us on Twitter and Facebook for timely updates and
+                    lively conversation with your fellow Artisans.
+                </p>
+
+                <ul>
+                    <li>
+                        <a href="https://twitter.com/ArtisanChurch" title="Follow us on Twitter">
+                            <i class="icon-twitter-sign icon-2x"></i> Twitter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/ArtisanChurch" title="Like us on Facebook">
+                            <i class="icon-facebook-sign icon-2x"></i> Facebook
+                        </a>
+                    </li>
+                </ul>
+
+            </section>
+
+            <section class="sidebar-content contact-form">
+
+                <h1>Contact Form</h1>
+
+            {exp:email:contact_form recipients="info@artisanchurch.com"
+                                    charset="utf-8"
+                                    return="http://www.artisanchurch.com/contact/"}
+
+                <label for="name">Your Name:</label>
+                <input id="name" name="name" type="text" maxlength="64">
+
+                <label for="from">Your Email:</label>
+                <input id="from" name="from" type="email" maxlength="64">
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="6" cols="40"></textarea>
+
+                <input name="subject" type="hidden" value="ArtisanChurch.com contact form submission">
+
+                <input name="submit" type="submit" value="Send">
+
+            {/exp:email:contact_form}
+
+            </section>
+
+        </aside>
+
+    </main>
+
+{embed="v3/_footer" sec_slug="contact"}
+
+{embed="v3/_page-bottom"}
