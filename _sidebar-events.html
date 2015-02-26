@@ -11,9 +11,6 @@
                     <li class="staff{if embed:page_slug == 'full-calendar'} current{/if}">
                         <a href="/full-calendar/">Subscribe</a>
                     </li>
-                    <li class="name{if embed:page_slug == 'save-the-date'} current{/if}">
-                        <a href="/save-the-date/">Save the Date</a>
-                    </li>
                 </ul>
             </nav>
 
@@ -39,5 +36,35 @@
                 </article>
             {/exp:gcal}
             </section>--}
+
+            <section class="sidebar-content">
+                <h1>Save the Date</h1>
+
+                <dl class="save-the-date-list">
+
+                {!-- Fetch events with "save-the-date" checked --}
+                {exp:weblog:entries weblog="events"
+                                    search:event_save_the_date="=Yes"
+                                    orderby="event_start_date"
+                                    sort="asc"
+                                    limit="99"
+                                    disable="categories|category_fields|member_data|pagination|trackbacks"}
+
+                    <dt class="save-the-date-title">{title}</dt>
+
+                    {if event_date_desc}
+                        <dd class="save-the-date-date">{event_date_desc}</dd>
+                    {if:else}
+                        <dd class="save-the-date-date">{event_start_date}</dd>
+                    {/if}
+
+                    {if event_short_description}
+                        <dd class="save-the-date-desc">{event_short_description}</dd>
+                    {/if}
+
+                {/exp:weblog:entries}
+
+                </dl>
+            </section>
 
         </aside>

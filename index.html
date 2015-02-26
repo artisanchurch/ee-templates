@@ -29,6 +29,7 @@
 
         <section class="features">
 
+{!-- Display current message series --}
 {exp:weblog:entries weblog="series" limit="1"}
             <section class="feature-primary">
                 <!-- Would like to change URL structure to worship/(messages/)series -->
@@ -62,16 +63,39 @@
 
             <div class="features-secondary">
 
+{!-- Build event ID list --}
+{exp:ministash:set name="event_id_list"}
+    {exp:query sql="SELECT entry_id,
+                           field_id_53 AS event_end_date,
+                           field_id_95 AS event_priority,
+                           field_id_96 AS event_save_the_date
+                    FROM exp_weblog_data
+                    WHERE weblog_id = 11
+                      AND field_id_53 > UNIX_TIMESTAMP()
+                      AND field_id_96 != 'Yes'
+                    ORDER BY field_id_95 DESC,
+                             field_id_53 ASC
+                    LIMIT 3"
+               orderby="event_priority|event_end_date"
+               sort="desc|asc"
+               limit="3"
+               disable="categories|category_fields|member_data|pagination|trackbacks"
+               backspace="1"}{entry_id}|{/exp:query}
+{/exp:ministash:set}
+
+{!-- Fetch all events whose IDs match the list built above --}
 {exp:weblog:entries weblog="events"
-                    show_future_entries="yes"
-                    start_on="{current_time format='%Y-%m-%d %H:%i'}"
-                    orderby="event_start_date"
-                    sort="asc"
-                    limit="1"}
-    <!-- If event end date is not in the past -->
-    {if "{exp:recent_past date='{event_end_date}' past_days='0'}" == "yes"}
-    <!-- The commented line below is a workaround for an EE parsing bug as of v1.6.9. DO NOT DELETE! -->
-    <!-- {exp:recent_past date='{event_end_date}' past_days='0'} -->
+                    parse="inward"
+                    entry_id="{exp:ministash:get name='event_id_list'}"
+                    orderby="event_priority|event_end_date"
+                    sort="desc|asc"
+                    limit="3"
+                    disable="categories|category_fields|member_data|pagination|trackbacks"}
+
+    {!-- This conditional ensures that the third result only displays if it has a priority > 1.
+         The nth-child(4) styling for the feature-podcast block will hide it if this is true. --}
+    {if count < 3 || event_priority > 1}
+
                 <section class="feature-secondary">
                     <a href="/events/{url_title}">
                         <!-- small feature image -->
@@ -83,7 +107,7 @@
                     </a>
                     <section class="feature-secondary-copy">
                         <header>
-                            <h3 class="feature-slug">Special Event</h3>
+                            <h3 class="feature-slug">Upcoming Event</h3>
                             <a class="feature-secondary-title" href="/events/{url_title}">
                                 <h1>{title}</h1>
                             </a>
@@ -95,36 +119,18 @@
                         {event_description}
                     {/if}
                         <a class="read-more" href="/events/{url_title}">
-                            learn more <i class="icon-angle-right"></i>
+                            learn more&nbsp;<i class="icon-angle-right"></i>
                         </a>
                     </section>
                 </section>
+
     {/if}
+
 {/exp:weblog:entries}
 
                 <section class="feature-secondary">
-                    <a href="#">
-                        <!-- <img src="http://dummyimage.com/280x158/CCC/222&amp;text=small+feature" alt="small feature" width="280" /> -->
-                        <img data-src="holder.js/400x225/auto" />
-                        <!-- small feature image -->
-                    </a>
-                    <section class="feature-secondary-copy">
-                        <header>
-                            <h3 class="feature-slug">Upcoming Series</h3>
-                            <a class="feature-secondary-title" href="/worship/messages/series-name/">
-                                <h1>Big, Long Series Title</h1>
-                            </a>
-                            <h2>Probably even longer series subtitle</h2>
-                        </header>
-                        <p>This is the shorter description of this item. This is the shorter description of this item. <a href="#">learn more&nbsp;<i class="icon-angle-right"></i></a></p>
-                    </section>
-                </section>
-
-                <section class="feature-secondary">
-                    <a href="#">
-                        <!-- <img src="http://dummyimage.com/280x158/CCC/222&amp;text=small+feature" alt="small feature" width="280" /> -->
-                        <img data-src="holder.js/400x225/auto" />
-                        <!-- small feature image -->
+                    <a href="/podcast/">
+                        <img src="/ee/images/site_images/series/2014_ArtisanPodcast_web.jpg" alt="" width="280">
                     </a>
                     <section class="feature-secondary-copy">
                         <header>
@@ -132,9 +138,15 @@
                             <a class="feature-secondary-title" href="/podcast/">
                                 <h1>Download Our Podcast</h1>
                             </a>
-                            <h2>Sermon Audio</h2>
+                            <h2>Message Audio</h2>
                         </header>
-                        <p>This is the shorter description of this item. This is the shorter description of this item. <a href="/podcast">learn more&nbsp;<i class="icon-angle-right"></i></a></p>
+                        <p>
+                            Subscribe to our podcast and automatically receive Artisan Church's weekly
+                            message and other audio and video content, such as songs, interviews, and more.
+                        </p>
+                        <a class="read-more" href="/events/{url_title}">
+                            learn more&nbsp;<i class="icon-angle-right"></i>
+                        </a>
                     </section>
                 </section>
 
