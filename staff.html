@@ -1,6 +1,6 @@
 {embed="v3/_page-top"
- title="About Us: Meet the Staff"
- desc="Artisan Church is led by Pastor Scott Austin and Children's Pastor Jessie Brajcki."
+ title="About Us: Pastoral Staff"
+ desc="Artisan is led by Pastor Scott Austin and Children’s Pastor Jessie Brajcki."
  page_slug="staff"
  sec_slug="about"}
 
@@ -10,13 +10,37 @@
 
         <section class="content">
 
-            <h1>Meet the Staff</h1>
+            <h1>Artisan Pastoral Staff</h1>
 
+        {exp:weblog:entries weblog="staff"
+                            orderby="start_date"
+                            sort="asc"
+                            limit="5"
+                            disable="categories|category_fields|member_data|pagination|trackbacks"}
 
+            <article class="staff-member">
+
+                <img class="staff-photo" src="{staffPhoto}">
+
+                <h2 class="staff-name">{title}</h2>
+                <div class="staff-title h3">{staffPosition}</div>
+
+                <dl class="staff-contact">
+                    <dt>Email:</dt>
+                        <dd><a href="mailto:{staffEmail}">{staffEmail}</a></dd>
+                    <dt>Phone:</dt>
+                        <dd><a href="tel:+1{staffPhone}">{staffPhone}</a></dd>
+                </dl>
+
+                {staffBio}
+
+            </article>
+
+        {/exp:weblog:entries}
 
         </section>
 
-        {embed="v3/_sidebar-section.html" page_slug="staff"}
+        {embed="v3/_sidebar-about" page_slug="staff"}
 
     </main>
 
