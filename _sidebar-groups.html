@@ -1,0 +1,64 @@
+
+        <aside class="sidebar">
+
+            <div class="section-id">Groups <i class="icon-chevron-right"></i></div>
+
+            <nav class="nav-inside">
+                <ul>
+                    <li class="mission-values{if embed:page_slug == 'groups'} current{/if}">
+                        <a href="/groups/">Overview</a>
+                    </li>
+                    <li class="staff{if embed:page_slug == 'home-groups'} current{/if}">
+                        <a href="/home-groups/">Home Groups</a>
+                    </li>
+                    <li class="name{if embed:page_slug == 'connection-groups'} current{/if}">
+                        <a href="/connection-groups/">Connection Groups</a>
+                    </li>
+                    <li class="ministries{if embed:page_slug == 'study-groups'} current{/if}">
+                        <a href="/study-groups/">Study Groups</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <section class="sidebar-content contact-form">
+
+                <h1>Get Involved</h1>
+                <p>
+                    To ask a question or get involved, please contact us using this form.
+                    You can also email
+                    <a href="mailto:groups@artisanchurch.com">groups@artisanchurch.com</a>
+                    directly.
+                </p>
+
+            {exp:email:contact_form recipients="groups@artisanchurch.com"
+                                    charset="utf-8"
+                                    return="http://www.artisanchurch.com/groups/"}
+
+                <label for="name">Your Name:</label>
+                <input id="name" name="name" type="text" maxlength="64">
+
+                <label for="from">Your Email:</label>
+                <input id="from" name="from" type="email" maxlength="64">
+
+                <input name="message[]" type="hidden" value="Interested in:">
+                <label for="interest">Interested in:</label>
+                <input id="interest"
+                       name="message[]"
+                       type="text"
+                       maxlength="64"
+                       placeholder="type of group? leading? hosting?">
+
+
+                <input name="message[]" type="hidden" value="Comments:">
+                <label for="message">Comments:</label>
+                <textarea id="message" name="message[]" rows="6" cols="40"></textarea>
+
+                <input name="subject" type="hidden" value="ArtisanChurch.com groups form submission">
+
+                <input name="submit" type="submit" value="Send">
+
+            {/exp:email:contact_form}
+
+            </section>
+
+        </aside>
