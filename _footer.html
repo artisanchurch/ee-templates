@@ -28,22 +28,30 @@
                     </a>
                 </li>
             </ul>
-            <form name="enews-subscribe" class="enews-subscribe">
-                <fieldset>
+{exp:email:contact_form user_recipients="false"
+                        recipients="scott@artisanchurch.com"
+                        charset="utf-8"
+                        redirect="5"
+                        return="{site_url}"}
+                <fieldset class="enews-subscribe">
                     <div class="enews-legend">
                         <legend>Subscribe to our weekly email newsletter</legend>
                     </div>
 
                     <div class="enews-input">
-                        <label for="email">E-mail</label>
-                        <input id="email" name="email" type="email" placeholder="E-mail address">
+                        <label for="from">E-mail</label>
+                        <input id="from" name="from" type="email" placeholder="E-mail address">
                     </div>
+
+                    {!-- These hidden fields are required for the form to work --}
+                    <input id="subject" name="subject" type="hidden" value="Artisan e-news subscription request">
+                    <input id="message" name="message" type="hidden" value="Please add me to your e-news subscription list. (Sent from the subscription form on ArtisanChurch.com.)">
 
                     <div class="enews-submit">
                         <input id="submit" name="submit" type="submit" value="Sign up">
                     </div>
                 </fieldset>
-            </form>
+{/exp:email:contact_form}
         </section>
 
     </footer>

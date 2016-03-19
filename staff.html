@@ -25,14 +25,14 @@
                 <h2 class="staff-name">{title}</h2>
                 <div class="staff-title h3">{staffPosition}</div>
 
+                {staffBio}
+
                 <dl class="staff-contact">
                     <dt>Email:</dt>
                         <dd><a href="mailto:{staffEmail}">{staffEmail}</a></dd>
-                    <dt>Phone:</dt>
-                        <dd><a href="tel:+1{staffPhone}">{staffPhone}</a></dd>
+                    {!-- <dt>Phone:</dt>
+                        <dd><a href="tel:+1{staffPhone}">{staffPhone}</a></dd> --}
                 </dl>
-
-                {staffBio}
 
             </article>
 

@@ -1,0 +1,73 @@
+{exp:weblog:entries weblog="series" url_title="{segment_5}" limit="1"}
+
+{embed="v3/_page-top"
+ title="{title} (Series)"
+ desc="Description and schedule of the Artisan message series “{title}”"
+ page_slug="series"
+ sec_slug="worship"}
+
+{embed="v3/_header" sec_slug="worship"}
+
+    <main class="main inside" id="main" role="main">
+
+        <section class="content">
+
+            <h1>{title}</h1>
+            {if SeriesSubtitle}<div class="series-subtitle h2">{SeriesSubtitle}</div>{/if}
+
+            <img class="series-img" src="{ImageURL}">
+
+            <div class="h3">{start_date format="%M %d"} – {end_date format="%M %d, %Y"}</div>
+
+            {series_description}
+
+            <h2>Message line-up:</h2>
+            <dl class="series-lineup">
+        {reverse_related_entries weblog="messages" orderby="msg_date"}
+            {if hidden==""}
+                <dt>{msg_date format="%n/%j"}</dt>
+                    <dd class="message-title">{title}</dd>
+                {if speaker}
+                    <dd class="message-speaker">{speaker}</dd>
+                {/if}
+                {if audio}
+                    <dd><a class="message-av-link" href="{audio}">
+                        <i class="icon-headphones"></i> Listen
+                    </a></dd>
+                {/if}
+                {if video}
+                    <dd><a class="message-av-link" href="{video}">
+                        <i class="icon-youtube-play"></i> Watch
+                    </a></dd>
+                {/if}
+                {if message_description}
+                    <dd class="message-description">
+                        {message_description}
+                    </dd>
+                {/if}
+                {if scriptures}
+                    <dd class="message-scriptures">
+                        ({exp:verse_url}{scriptures}{/exp:verse_url})
+                    </dd>
+                {/if}
+            {/if}
+        {/reverse_related_entries}
+            </dl>
+
+        {if extra_details}
+            {extra_details}
+        {/if}
+
+{/exp:weblog:entries}
+
+            {!-- <a class="read-more" href="/archives">view message archive</a> --}
+
+        </section>
+
+        {embed="v3/_sidebar-worship" page_slug="series"}
+
+    </main>
+
+{embed="v3/_footer" sec_slug="worship"}
+
+{embed="v3/_page-bottom"}
