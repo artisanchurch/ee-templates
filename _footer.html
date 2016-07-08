@@ -1,57 +1,45 @@
-    <footer>
+    <footer class="footer">
+        <div class="wrapper">
+            <div class="footer-items">
+                <section class="vcard">
+                    <h1 class="fn org">Artisan Church</h1>
+                    <div class="adr">
+                        <div class="street-address">1235 South Clinton Avenue</div>
+                        <span class="locality">Rochester</span>,
+                        <span class="region">New York</span>
+                        <span class="postal-code">14620</span>
+                    </div>
+                    <a class="email" href="mailto:info@artisanchurch.com">info@artisanchurch.com</a>
+                </section>
 
-        <section class="vcard">
-            <h1 class="fn org">Artisan Church</h1>
-            <div class="adr">
-                <div class="street-address">1235 South Clinton Avenue</div>
-                <span class="locality">Rochester</span>,
-                <span class="region">New York</span>
-                <span class="postal-code">14620</span>
-            </div>
-            <a class="email" href="mailto:info@artisanchurch.com">info@artisanchurch.com</a>
-        </section>
-
-        <nav class="footer-nav" id="footer-nav" role="navigation">
+                <nav class="footer-nav" id="footer-nav" role="navigation">
 {embed="v3/_navigation" sec_slug="{embed:sec_slug}"}
-        </nav>
+                </nav>
 
-        <section class="social">
-            <ul>
-                <li>
-                    <a href="https://twitter.com/ArtisanChurch" title="Follow us on Twitter">
-                        <i class="icon-twitter-sign icon-2x"></i> Twitter
+                <section class="social">
+                    <ul>
+                        <li>
+                            <a href="https://twitter.com/ArtisanChurch" title="Follow us on Twitter">
+                                <i class="icon-twitter-sign icon-2x"></i> Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/ArtisanChurch" title="Like us on Facebook">
+                                <i class="icon-facebook-sign icon-2x"></i> Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/artisanchurch/" title="See us on Instagram">
+                                <i class="icon-instagram icon-2x"></i> Instagram
+                            </a>
+                        </li>
+                    </ul>
+
+                    <a class="enews-subscribe" href="https://artisanchurch.ccbchurch.com/form_response.php?id=5">
+                        Subscribe to our weekly e-mail news
+                        <i class="icon-external-link-sign"></i>
                     </a>
-                </li>
-                <li>
-                    <a href="https://www.facebook.com/ArtisanChurch" title="Like us on Facebook">
-                        <i class="icon-facebook-sign icon-2x"></i> Facebook
-                    </a>
-                </li>
-            </ul>
-{exp:email:contact_form user_recipients="false"
-                        recipients="scott@artisanchurch.com"
-                        charset="utf-8"
-                        redirect="5"
-                        return="{site_url}"}
-                <fieldset class="enews-subscribe">
-                    <div class="enews-legend">
-                        <legend>Subscribe to our weekly email newsletter</legend>
-                    </div>
-
-                    <div class="enews-input">
-                        <label for="from">E-mail</label>
-                        <input id="from" name="from" type="email" placeholder="E-mail address">
-                    </div>
-
-                    {!-- These hidden fields are required for the form to work --}
-                    <input id="subject" name="subject" type="hidden" value="Artisan e-news subscription request">
-                    <input id="message" name="message" type="hidden" value="Please add me to your e-news subscription list. (Sent from the subscription form on ArtisanChurch.com.)">
-
-                    <div class="enews-submit">
-                        <input id="submit" name="submit" type="submit" value="Sign up">
-                    </div>
-                </fieldset>
-{/exp:email:contact_form}
-        </section>
-
+                </section>
+            </div>
+        </div>
     </footer>

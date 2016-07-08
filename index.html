@@ -2,29 +2,24 @@
 
 {embed="v3/_header"}
 
-    <main class="main" id="main" role="main">
+<main class="main" id="main" role="main">
+
+    <div class="wrapper">
 
         <section class="home-kickers">
-
             <a class="home-kicker home-mission" href="about/">
                 <div class="kicker-bg">
                     <h1 class="kicker-head">Our Mission</h1>
-                    <p>Encounter God, embrace people, engage culture&mdash;in the way of Jesus.</p>
+                    <p>Encounter God, embrace people, engage culture—in the way of Jesus.</p>
                 </div>
-            </a>
-
-            <a class="home-kicker home-map" href="directions/">
-                <div class="home-map-text kicker-head">Directions</div>
             </a>
 
             <a class="home-kicker home-services" href="worship/">
                 <div class="kicker-bg">
                     <h1 class="kicker-head">Sunday Worship</h1>
-                    <h2 class="kicker-head">10:00&ndash;11:30 am</h2>
-                    <h3>Followed by coffee &amp; conversation</h3>
+                    <h2 class="kicker-head">8:45 & 11:00 <span class="ampm">am</span></h2>
                 </div>
             </a>
-
         </section>
 
         <section class="features">
@@ -32,10 +27,10 @@
 {!-- Display current message series --}
 {exp:weblog:entries weblog="series" limit="1"}
             <section class="feature-primary">
-                <!-- Would like to change URL structure to worship/(messages/)series -->
+                {!-- Would like to change URL structure to worship/(messages/)series --}
                 <a class="feature-primary-img" href="/series/{url_title}">
+                    {!-- big feature image (16x9) --}
                     <div class="feature-primary-img-bg">
-                        <!-- big feature image (16x9) -->
                     {if ImageURL}
                         <img src="{ImageURL}" alt="">
                     {if:else}
@@ -46,11 +41,13 @@
                 <section class="feature-primary-copy">
                     <div class="feature-primary-copy-bg">
                         <header>
-                            <h3 class="feature-slug">Current Series</h3>
+                            <h3 class="feature-slug">Current series</h3>
                             <a class="feature-primary-title" href="/series/{url_title}">
                                 <h1>{title}</h1>
                             </a>
-                            {if SeriesSubtitle}<h2>{SeriesSubtitle}</h2>{/if}
+                        {if SeriesSubtitle}
+                            <h2>{SeriesSubtitle}</h2>
+                        {/if}
                         </header>
                         {series_description}
                         <a class="read-more" href="/series/{url_title}">
@@ -97,8 +94,9 @@
     {if count < 3 || event_priority > 1}
 
                 <section class="feature-secondary">
+                    <h3 class="feature-slug">Upcoming event</h3>
                     <a href="/events/{url_title}">
-                        <!-- small feature image -->
+                    {!-- small feature image --}
                     {if event_image}
                         <img src="{event_image}" alt="">
                     {if:else}
@@ -107,11 +105,12 @@
                     </a>
                     <section class="feature-secondary-copy">
                         <header>
-                            <h3 class="feature-slug">Upcoming Event</h3>
                             <a class="feature-secondary-title" href="/events/{url_title}">
                                 <h1>{title}</h1>
                             </a>
-                            {if event_date_desc}<h2>{event_date_desc}</h2>{/if}
+                        {if event_date_desc}
+                            <h2>{event_date_desc}</h2>
+                        {/if}
                         </header>
                     {if event_short_description}
                         {event_short_description}
@@ -129,16 +128,16 @@
 {/exp:weblog:entries}
 
                 <section class="feature-secondary">
+                    <h3 class="feature-slug">Miss a week?</h3>
                     <a href="/podcast/">
                         <img src="/ee/images/site_images/series/2014_ArtisanPodcast_web.jpg" alt="" width="280">
                     </a>
                     <section class="feature-secondary-copy">
                         <header>
-                            <h3 class="feature-slug">Miss a Week?</h3>
                             <a class="feature-secondary-title" href="/podcast/">
-                                <h1>Download Our Podcast</h1>
+                                <h1>Download our podcast</h1>
                             </a>
-                            <h2>Message Audio</h2>
+                            <h2>Message audio</h2>
                         </header>
                         <p>
                             Subscribe to our podcast and automatically receive Artisan Church's weekly
@@ -154,7 +153,9 @@
 
         </section>
 
-    </main>
+    </div>
+
+</main>
 
 {embed="v3/_footer"}
 

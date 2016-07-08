@@ -1,23 +1,13 @@
-    <header>
+    <header class="header">
+        <div class="wrapper">
+            <a class="logo" href="/">
+                <img src="/static/img/logo_v3.png" alt="Artisan Church">
+            </a>
 
-        <a class="logo" href="/">
-            <img class="logo-svg"
-                 src="/static/img/logo.svg"
-                 onerror="this.onerror=null;this.src='/static/img/logo_h_300x61_transparent.png';"
-                 alt="Artisan Church">
-            <noscript>
-                <img class="logo-png"
-                     src="/static/img/logo_h_300x61_transparent.png"
-                     alt="Artisan Church"
-                     width="300"
-                     height="61">
-            </noscript>
-        </a>
+            <button class="menu-button" id="menu-button"><i class="icon-reorder"></i> Menu</button>
 
-        <button class="menu-button" id="menu-button"><i class="icon-reorder"></i> Menu</button>
-
-        <nav class="header-nav" id="header-nav" role="navigation">
+            <nav class="header-nav" id="header-nav" role="navigation">
 {embed="v3/_navigation" sec_slug="{embed:sec_slug}"}
-        </nav>
-
+            </nav>
+        </div>
     </header>
