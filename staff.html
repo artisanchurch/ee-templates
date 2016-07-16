@@ -7,7 +7,7 @@
 {embed="v3/_header" sec_slug="about"}
 
     <main class="main inside" id="main" role="main">
-
+      <div class="wrapper">
         <section class="content">
 
             <h1>Artisan Pastoral Staff</h1>
@@ -25,14 +25,14 @@
                 <h2 class="staff-name">{title}</h2>
                 <div class="staff-title h3">{staffPosition}</div>
 
-                {staffBio}
-
                 <dl class="staff-contact">
                     <dt>Email:</dt>
                         <dd><a href="mailto:{staffEmail}">{staffEmail}</a></dd>
                     {!-- <dt>Phone:</dt>
                         <dd><a href="tel:+1{staffPhone}">{staffPhone}</a></dd> --}
                 </dl>
+
+                {staffBio}
 
             </article>
 
@@ -41,7 +41,7 @@
         </section>
 
         {embed="v3/_sidebar-about" page_slug="staff"}
-
+      </div>
     </main>
 
 {embed="v3/_footer" sec_slug="about"}
