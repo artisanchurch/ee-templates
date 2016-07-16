@@ -15,7 +15,7 @@
 {embed="v3/_header" sec_slug="events"}
 
     <main class="main inside" id="main" role="main">
-
+      <div class="wrapper">
         <section class="content">
 
             <h1>Current & Upcoming Events</h1>
@@ -49,49 +49,49 @@
                         limit="10"
                         disable="categories|category_fields|member_data|pagination|trackbacks"}
 
-        <article class="event">
+                    <article class="event">
 
-            <a href="/events/{url_title}">
-            {if event_image}
-                <img class="event-img" src="{event_image}" alt="">
-            {if:else}
-                <img class="event-img" data-src="holder.js/580x326/auto/text:{title}" alt="">
-            {/if}
-            </a>
+                        <a href="/events/{url_title}">
+                        {if event_image}
+                            <img class="event-img" src="{event_image}" alt="">
+                        {if:else}
+                            <img class="event-img" data-src="holder.js/580x326/auto/text:{title}" alt="">
+                        {/if}
+                        </a>
 
-            <div class="event-description">
+                        <div class="event-description">
 
-                <a href="/events/{url_title}">
-                    <h1 class="event-title h2">{title}</h1>
-                </a>
+                            <a href="/events/{url_title}">
+                                <h1 class="event-title h2">{title}</h1>
+                            </a>
 
-            {if event_date_desc}
-                <div class="h3 event-date">{event_date_desc}</div>
-            {/if}
+                        {if event_date_desc}
+                            <div class="h3 event-date">{event_date_desc}</div>
+                        {/if}
 
-            {if event_short_description}
-                {event_short_description}
-            {if:else}
-                {event_description}
-            {/if}
+                        {if event_short_description}
+                            {event_short_description}
+                        {if:else}
+                            {event_description}
+                        {/if}
 
-            {if event_cost}
-                <p><b>Cost:</b> {event_cost}</p>
-            {/if}
+                        {if event_cost}
+                            <p><b>Cost:</b> {event_cost}</p>
+                        {/if}
 
-            {if event_location}
-                <p><b>Location:</b> {event_location}</p>
-            {/if}
+                        {if event_location}
+                            <p><b>Location:</b> {event_location}</p>
+                        {/if}
 
-            {if event_extra_details || (event_short_description && event_description)}
-                <a class="read-more" href="/events/{url_title}">
-                    more details <i class="icon-angle-right"></i>
-                </a>
-            {/if}
+                        {if event_extra_details || (event_short_description && event_description)}
+                            <a class="read-more" href="/events/{url_title}">
+                                more details <i class="icon-angle-right"></i>
+                            </a>
+                        {/if}
 
-            </div> <!-- /.event-description -->
+                        </div> <!-- /.event-description -->
 
-        </article> <!-- /.event -->
+                    </article> <!-- /.event -->
 
     {/exp:weblog:entries}
 
@@ -116,7 +116,7 @@
 {embed="v3/_header" sec_slug="events"}
 
     <main class="main inside" id="main" role="main">
-
+      <div class="wrapper">
         <section class="content">
 
             <article class="event">
@@ -194,7 +194,7 @@
         </section>
 
         {embed="v3/_sidebar-events" page_slug="current-events"}
-
+      </div>
     </main>
 
 {embed="v3/_footer" sec_slug="events"}
