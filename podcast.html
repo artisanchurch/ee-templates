@@ -50,9 +50,9 @@
         </section>
 
         <aside class="sidebar">
-
             <section class="sidebar-content">
                 <h1>Recent messages</h1>
+
                 <dl class="recent-messages">
                 {exp:weblog:entries weblog="messages"
                                     search:audio="not IS_EMPTY"
@@ -65,8 +65,12 @@
                         <dd><a href="{audio}">Listen</a></dd>
                 {/exp:weblog:entries}
                 </dl>
-            </section>
 
+                <a href="/archives/">
+                    View full archive
+                    <i class="icon-angle-right"></i>
+                </a>
+            </section>
         </aside>
       </div>
     </main>

@@ -7,42 +7,41 @@
 {embed="v3/_header" sec_slug="contact"}
 
     <main class="main inside" id="main" role="main">
-
+      <div class="wrapper">
         <section class="content">
 
             <h1>Contact Us</h1>
 
-            <div class="contact-general">
+            <div class="main-contacts">
+                <div class="contacts-staff">
+                    <h2>Staff</h2>
+                    <dl>
+                    {exp:weblog:entries weblog="staff"
+                                        orderby="start_date"
+                                        sort="asc"
+                                        limit="5"
+                                        disable="categories|category_fields|member_data|pagination|trackbacks"}
+                        <dt>{title}</dt>
+                            <dd>{staffPosition}</dd>
+                            <dd><a href="mailto:{staffEmail}">{staffEmail}</a></dd>
+                            {!-- <dd><a href="tel:+1 {staffPhone}">{staffPhone}</a></dd> --}
+                    {/exp:weblog:entries}
+                    </dl>
+                </div>
 
-                <dl>
-                    <dt>General inquiries</dt>
-                        <dd><a href="mailto:info@artisanchurch.com">info@artisanchurch.com</a></dd>
-                    <dt>Prayer requests</dt>
-                        <dd><a href="mailto:prayer@artisanchurch.com">prayer@artisanchurch.com</a></dd>
-                    <dt>Questions about giving</dt>
-                        <dd><a href="mailto:giving@artisanchurch.com">giving@artisanchurch.com</a></dd>
-                </dl>
-
+                <div class="contacts-general">
+                    <dl>
+                        <dt>General inquiries</dt>
+                            <dd><a href="mailto:info@artisanchurch.com">info@artisanchurch.com</a></dd>
+                        <dt>Prayer requests</dt>
+                            <dd><a href="mailto:prayer@artisanchurch.com">prayer@artisanchurch.com</a></dd>
+                        <dt>Questions about giving</dt>
+                            <dd><a href="mailto:giving@artisanchurch.com">giving@artisanchurch.com</a></dd>
+                        <dt>Emergency needs</dt>
+                            <dd><a href="tel:+1 (585) 851-8278">(585) 851-8278</a></dd>
+                    </dl>
+                </div>
             </div>
-
-            <h2>Staff</h2>
-
-            <dl>
-
-            {exp:weblog:entries weblog="staff"
-                                orderby="start_date"
-                                sort="asc"
-                                limit="5"
-                                disable="categories|category_fields|member_data|pagination|trackbacks"}
-
-                <dt>{title}</dt>
-                    <dd>{staffPosition}</dd>
-                    <dd><a href="mailto:{staffEmail}">{staffEmail}</a></dd>
-                    {!-- <dd><a href="tel:+1 {staffPhone}">{staffPhone}</a></dd> --}
-
-            {/exp:weblog:entries}
-
-            </dl>
 
             <h2>Lay Leadership</h2>
 
@@ -72,6 +71,19 @@
                 <a href="/ministries/">Ministries</a> section.
             </p>
 
+            <h2>Accessibility</h2>
+
+            <img class="float-right" src="/images/accessibility.svg" width="150">
+            <p>
+                Artisan Church welcomes everyone to our community.
+                We are physically accessible and continuously working to become more accessible and inclusive.
+                If you have a question about accessibility at Artisan or would like to request an accommodation
+                to engage in church services or events, such as ASL interpretation, transportation,
+                or assistive technology, please contact our Accessibility Team at
+                <a href="mailto:accessibility@artisanchurch.com">accessibility@artisanchurch.com</a>.
+                Whenever possible, please make requests at least one week in advance
+                so that we have the best opportunity to meet your needs.
+            </p>
 
         </section>
 
@@ -97,6 +109,11 @@
                             <i class="icon-facebook-sign icon-2x"></i> Facebook
                         </a>
                     </li>
+                    <li>
+                        <a href="https://www.instagram.com/artisanchurch/" title="See us on Instagram">
+                            <i class="icon-instagram icon-2x"></i> Instagram
+                        </a>
+                    </li>
                 </ul>
 
             </section>
@@ -120,14 +137,14 @@
 
                 <input name="subject" type="hidden" value="ArtisanChurch.com contact form submission">
 
-                <input name="submit" type="submit" value="Send">
+                <input class="btn" name="submit" type="submit" value="Send">
 
             {/exp:email:contact_form}
 
             </section>
 
         </aside>
-
+      </div>
     </main>
 
 {embed="v3/_footer" sec_slug="contact"}

@@ -1,23 +1,36 @@
 {embed="v3/_page-top"
  title="About Us: Ministries"
- desc="There are many ways to get involved in the ministry of Artisan Church."
+ desc="Artisan’s ministry teams and how to get involved at our church."
  page_slug="ministries"
  sec_slug="about"}
 
 {embed="v3/_header" sec_slug="about"}
 
     <main class="main inside" id="main" role="main">
-
+      <div class="wrapper">
         <section class="content">
 
             <h1>Ministries</h1>
 
+        {exp:weblog:entries weblog="ministries"
+                            orderby="title"
+                            sort="asc"
+                            disable="categories|category_fields|member_data|pagination|trackbacks"}
 
+            <h2>{title}</h2>
+            <p class="ministry-description">
+                {ministry_description}
+            </p>
+            <p class="ministry-contact">
+                Contact {ministry_contact_name} at {ministry_contact_email} to get involved.
+            </p>
+
+        {/exp:weblog:entries}
 
         </section>
 
-        {embed="v3/_sidebar-section.html" page_slug="ministries"}
-
+        {embed="v3/_sidebar-about" page_slug="ministries"}
+      </div>
     </main>
 
 {embed="v3/_footer" sec_slug="about"}

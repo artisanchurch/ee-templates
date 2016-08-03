@@ -9,15 +9,19 @@
 {embed="v3/_header" sec_slug="worship"}
 
     <main class="main inside" id="main" role="main">
-
+      <div class="wrapper">
         <section class="content">
 
             <h1>{title}</h1>
-            {if SeriesSubtitle}<div class="series-subtitle h2">{SeriesSubtitle}</div>{/if}
 
             <img class="series-img" src="{ImageURL}">
 
-            <div class="h3">{start_date format="%M %d"} – {end_date format="%M %d, %Y"}</div>
+            {if SeriesSubtitle}<div class="series-subtitle h2">{SeriesSubtitle}</div>{/if}
+            <div class="h3">
+                {start_date format="%F %d"}{if "{start_date format='%Y'}" != "{end_date format='%Y'}"}, {start_date format='%Y'}{/if}
+                –
+                {end_date format="%F %d, %Y"}
+            </div>
 
             {series_description}
 
@@ -60,12 +64,15 @@
 
 {/exp:weblog:entries}
 
-            {!-- <a class="read-more" href="/archives">view message archive</a> --}
+            <a class="read-more" href="/archives">
+                View series archive
+                <i class="icon-angle-right"></i>
+            </a>
 
         </section>
 
         {embed="v3/_sidebar-worship" page_slug="series"}
-
+      </div>
     </main>
 
 {embed="v3/_footer" sec_slug="worship"}

@@ -50,7 +50,6 @@
                         disable="categories|category_fields|member_data|pagination|trackbacks"}
 
                     <article class="event">
-
                         <a href="/events/{url_title}">
                         {if event_image}
                             <img class="event-img" src="{event_image}" alt="">
@@ -60,10 +59,9 @@
                         </a>
 
                         <div class="event-description">
-
-                            <a href="/events/{url_title}">
-                                <h1 class="event-title h2">{title}</h1>
-                            </a>
+                            <h1 class="event-title h2">
+                                <a href="/events/{url_title}">{title}</a>
+                            </h1>
 
                         {if event_date_desc}
                             <div class="h3 event-date">{event_date_desc}</div>
@@ -88,9 +86,7 @@
                                 more details <i class="icon-angle-right"></i>
                             </a>
                         {/if}
-
                         </div> <!-- /.event-description -->
-
                     </article> <!-- /.event -->
 
     {/exp:weblog:entries}
